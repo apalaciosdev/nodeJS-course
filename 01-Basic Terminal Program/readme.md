@@ -1,4 +1,4 @@
-#Basic terminal program
+# Basic terminal program
 
 Basic usage of Yarg.
 
