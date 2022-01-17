@@ -1,27 +1,28 @@
 const fs = require('fs')
+const colors = require('colors')
 
-const createTable = async(table = 1, listTable=false) => {
+const createTable = async(table=1, listTable=false, until=10) => {
 
   try {
-    let salida = ''
+    let data = ''
   
     
-    for (let i = 1; i < 11; i++) {
+    for (let i = 1; i <= until; i++) {
       let result = table*i
       
-      salida += `${table} x ${i} = ${result}\n`
+      data += `${table} x ${i} = ${result}\n`
     }
     
     if(listTable){
       console.clear()
-      console.log('------------')
-      console.log('Tabla del ' + table)
-      console.log('------------')
-      console.log(salida)
+      console.log('--------'.rainbow)
+      console.log('Table ' + table)
+      console.log('--------'.rainbow)
+      console.log(data)
     }
     
-    fs.writeFileSync(`tabla-${table}.txt`, salida)
-    console.log(`The file tabla-${table}.txt has been created!`);
+    fs.writeFileSync(`./table_files/table-${table}.txt`, data)
+    console.log(`The file table-${table}.txt has been created!`.yellow);
   
     return `tabla-${table}.txt`
     
