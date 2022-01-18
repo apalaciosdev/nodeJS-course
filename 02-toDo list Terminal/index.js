@@ -1,7 +1,14 @@
-const { createTable } = require('./helpers/multiply')
-const argv = require('./config/yargs')
+require('colors')
+
+const { showMenu, pause } = require('./helpers/messages')
+
+console.clear()
 
 
-createTable(argv.table, argv.listTable, argv.until)
-  .then( createdFile => console.log(createdFile, "created!") )
-  .catch( err => console.log(err) )
+const main = async() => {
+  console.log('Hola mundo')
+  showMenu()
+  pause()
+}
+
+main()
