@@ -1,6 +1,7 @@
 require('colors')
 
 const { inquirerMenu, pause, readInput } = require('./helpers/inquirer')
+const saveFile = require('./helpers/saveFile')
 const Task = require('./models/task')
 const Tasks = require('./models/tasks')
 
@@ -28,6 +29,8 @@ const main = async() => {
     
 
     }
+
+    saveFile( tasks.arrList )
 
     await pause()
     
