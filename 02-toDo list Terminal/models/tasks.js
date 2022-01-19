@@ -27,6 +27,24 @@ class Tasks {
     this._list = {}
   }
 
+
+  readTasksFromArray( tasks = [] ){
+    //sacar tarea.id
+    const idTasks= []
+
+    tasks.forEach(element => {
+      idTasks.push(element.id)
+    });
+
+
+
+    return idTasks.forEach(element => {
+      console.log(element)
+    });
+
+  }
+
+
   createTask( desc = '' ){
     const task = new Task(desc)
 

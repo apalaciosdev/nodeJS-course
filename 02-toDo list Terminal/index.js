@@ -1,7 +1,7 @@
 require('colors')
 
 const { inquirerMenu, pause, readInput } = require('./helpers/inquirer')
-const saveFile = require('./helpers/saveFile')
+const { saveFile, readFile } = require('./helpers/modifyData')
 const Task = require('./models/task')
 const Tasks = require('./models/tasks')
 
@@ -12,7 +12,18 @@ const main = async() => {
   let opt = ''
   
   const tasks = new Tasks()
+
+
+  tasksFile = readFile()
+
+  if( tasksFile ){ //if json file exists
+//cargar tareas
+    tasks.readTasksFromArray(tasksFile)
+  }
   
+  await pause()
+
+
   do {
     //Show the menu
     opt = await inquirerMenu()
