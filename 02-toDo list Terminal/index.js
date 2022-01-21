@@ -16,13 +16,11 @@ const main = async() => {
 
   tasksFile = readFile()
 
-  if( tasksFile ){ //if json file exists
-//cargar tareas
-    tasks.readTasksFromArray(tasksFile)
+  if( tasksFile ){ //if json data file exists
+    tasks.loadTasksFromArray(tasksFile)
   }
   
-  await pause()
-
+  
 
   do {
     //Show the menu
@@ -35,7 +33,15 @@ const main = async() => {
         break;
       
       case '2':
-        console.log(tasks.arrList)
+        tasks.listTasks()
+        break;
+      
+      case '3':
+        tasks.statusTasks(true)
+        break;
+      
+      case '4':
+        tasks.statusTasks(false)
         break;
     
 

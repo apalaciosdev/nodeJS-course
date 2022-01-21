@@ -28,18 +28,10 @@ class Tasks {
   }
 
 
-  readTasksFromArray( tasks = [] ){
-    //sacar tarea.id
-    const idTasks= []
+  loadTasksFromArray( tasks = [] ){
 
-    tasks.forEach(element => {
-      idTasks.push(element.id)
-    });
-
-
-
-    return idTasks.forEach(element => {
-      console.log(element)
+    tasks.forEach(task => {
+      this._list[task.id] = task
     });
 
   }
@@ -49,6 +41,30 @@ class Tasks {
     const task = new Task(desc)
 
     this._list[task.id] = task
+  }
+
+
+  listTasks(){
+    console.log()
+    return this.arrList.map(({desc, completedOn}, index) => {
+      index++
+      console.log(`${index}.`.green , `${desc} :: ${completedOn ? "Completed".green : "Incomplete".red}`)
+    })
+  }
+  
+  
+  statusTasks( isCompleted = true){
+    return this.arrList.map(({desc, completedOn}, index) => {
+      index++
+      let statusTask = null
+      {
+        isCompleted ? statusTask==true : statusTask==null
+
+        completedOn == statusTask
+          ? console.log(`${index}.`.green , `${desc} :: ${completedOn ? "Completed".green : "Incomplete".red}`)
+          : console.log(`${index}.`.green , `${desc} :: ${completedOn ? "Completed".green : "Incomplete".red}`)
+      }
+    })
   }
 }
 
