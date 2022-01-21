@@ -54,15 +54,18 @@ class Tasks {
   
   
   statusTasks( isCompleted = true){
-    return this.arrList.map(({desc, completedOn}, index) => {
-      index++
-      let statusTask = null
-      {
-        isCompleted ? statusTask==true : statusTask==null
-
-        completedOn == statusTask
-          ? console.log(`${index}.`.green , `${desc} :: ${completedOn ? "Completed".green : "Incomplete".red}`)
-          : console.log(`${index}.`.green , `${desc} :: ${completedOn ? "Completed".green : "Incomplete".red}`)
+    console.log()
+    let counter = 0
+    return this.arrList.map(({desc, completedOn}) => {
+      
+      if(isCompleted){
+        counter+=1
+        { completedOn ?  console.log(`${counter}.`.green , `${desc} :: ${completedOn ? completedOn : ""}`) : '' }
+      }
+      
+      else{
+        counter+=1
+        { !completedOn ?  console.log(`${counter}.`.green , `${desc}`) : '' }
       }
     })
   }
