@@ -1,7 +1,7 @@
-const { createTable } = require('./helpers/multiply')
-const argv = require('./config/yargs')
+require('dotenv').config()
+const Server = require('./models/server')
 
 
-createTable(argv.table, argv.listTable, argv.until)
-  .then( createdFile => console.log(createdFile, "created!") )
-  .catch( err => console.log(err) )
+const server = new Server()
+
+server.listen()
