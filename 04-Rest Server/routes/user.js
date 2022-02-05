@@ -14,9 +14,4 @@ router.patch('/', usersPatch)
 router.delete('/', usersDelete)
 
 
-
-
-
-
-
 module.exports = router
