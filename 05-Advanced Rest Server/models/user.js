@@ -5,7 +5,7 @@ const UserSchema = Schema({
   mail: {type: String, required: [true, 'Mail is required'], unique: true},
   password: {type: String, required: [true, 'Password is required']},
   img: {type: String},
-  role: {type: String, required: true, enum: ['ADMIN_ROLE', 'USER_ROLE']},
+  role: {type: String, required: true, enum: ['ADMIN_ROLE', 'USER_ROLE', 'SALES_ROLE']},
   state: {type: Boolean, default: true},
   google: {type: Boolean, default: false}
 })

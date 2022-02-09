@@ -4,7 +4,6 @@ const User = require('../models/user')
 
 
 const usersGet = (req, res = response) => {
-
   const query = req.query   //http://localhost:2022/api/users?q=hola&name=aaron&apikey=35245234  ->  query params
   const { q, name = 'No name', apikey } = req.query
 
@@ -15,6 +14,7 @@ const usersGet = (req, res = response) => {
     apikey
   })
 }
+
 
 const usersPost = async(req, res = response) => {
 
