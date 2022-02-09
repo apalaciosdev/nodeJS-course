@@ -1,4 +1,7 @@
 const { response } = require("express") //this helps VSC for code snippets
+const bcrypt = require('bcryptjs')
+const User = require('../models/user')
+
 
 const usersGet = (req, res = response) => {
 
@@ -13,15 +16,28 @@ const usersGet = (req, res = response) => {
   })
 }
 
-const usersPost = (req, res = response) => {
+const usersPost = async(req, res = response) => {
 
-  //const body = req.body
-  const {name, age} = req.body
+  const { name, mail, password, role } = req.body
+  const user = new User({ name, mail, password, role })
+
+  // Verify if mail exists
+  const mailExists = await User.findOne({ mail })
+  if(mailExists){
+    return res.status(400).json({
+      msg: 'Mail is already registered'
+    })
+  }
+
+  // Encrypt password
+  const salt = bcrypt.genSaltSync()
+  user.password = bcrypt.hashSync(password, salt)
+
+  // Save in DB
+  await user.save()
 
   res.json({
-    msg: "post API - controller",
-    name,
-    age
+    user
   })
 }
 
