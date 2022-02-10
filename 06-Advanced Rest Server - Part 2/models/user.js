@@ -12,7 +12,8 @@ const UserSchema = Schema({
 
 //remove __v & password in response view
 UserSchema.methods.toJSON = function () {
-  const { __v, password, ...user } = this.toObject()
+  const { __v, password, _id, ...user } = this.toObject()
+  user.uid = _id //change the name of _id to uid
   return user
 }
 

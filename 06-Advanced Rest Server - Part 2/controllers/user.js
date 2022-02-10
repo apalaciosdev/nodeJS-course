@@ -76,13 +76,16 @@ const usersDelete = async(req, res = response) => {
 
   const { id } = req.params
 
+  const uid = req.uid //uid from middleware validate-jwt.js
+
   //Delete fisicaly (don't recommended)
   //const user = await User.findByIdAndDelete(id)
 
   const user = await User.findByIdAndUpdate(id, { state: false })
 
   res.json({
-    user
+    user,
+    uid
   })
 }
 
